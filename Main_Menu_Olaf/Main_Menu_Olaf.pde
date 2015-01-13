@@ -2,8 +2,9 @@ PImage Frozen;
 PImage Olafmenu;
 PImage Startbutton;
 PImage Exitbutton;
-int startbuttony;
-int startbuttonx;
+PImage Snowhill;
+int Startbuttony;
+int Startbuttonx;
 int exitbuttony;
 int exitbuttonx;
 
@@ -13,8 +14,9 @@ void setup(){
   Olafmenu = loadImage("Untitled-2.png");
   Startbutton = loadImage("Start.png");
   Exitbutton = loadImage("ExitButton.png");
-  startbuttonx= width/3-100;
-  startbuttony= height/2+70;
+  Snowhill= loadImage("snowhill.jpg");
+  Startbuttonx= width/3-100;
+  Startbuttony= height/2+70;
   exitbuttonx= width/2+250;
   exitbuttony= height/2+70;
 }
@@ -26,7 +28,16 @@ void draw(){
   text("Adventure", width/3.5, height/3);
   imageMode(CENTER);
 image(Olafmenu, width/2, height/2+70) ;
-image(Startbutton, startbuttonx, startbuttony);
+image(Startbutton, Startbuttonx, Startbuttony);
 image(Exitbutton, exitbuttonx, exitbuttony);
-if mouseX>startbuttonx-80 & 
+if (mouseX>Startbuttonx-80 && mouseX<Startbuttonx+80 && mouseY>Startbuttony-30 && mouseY<Startbuttony+30){
+  if(mousePressed == true){
+    image(Snowhill, width/2, height/2);
+}
+if (mouseX>exitbuttonx-80 && mouseX<exitbuttonx+80 && mouseY>exitbuttony-30 && mouseY<exitbuttony+30){
+  if(mousePressed == true){
+    exit();
+}
+}
+}
 }
