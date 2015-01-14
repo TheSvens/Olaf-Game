@@ -9,12 +9,11 @@ int exitbuttony;
 int exitbuttonx;
 
 void setup() {
-  Frozen = loadImage("Frozen_s_Poster_step_1_9.jpg");
+  Frozen = loadImage("Frozen_s_Poster_step_1_8.jpg");
+ Snowhill = loadImage("snowhill.jpg");
   size(Frozen.width, Frozen.height);
-  Olafmenu = loadImage("Untitled-2.png");
   Startbutton = loadImage("Start.png");
   Exitbutton = loadImage("ExitButton.png");
-  Snowhill= loadImage("snowhill.jpg");
   Startbuttonx= width/3-100;
   Startbuttony= height/2+70;
   exitbuttonx= width/2+250;
@@ -23,11 +22,8 @@ void setup() {
 
 void draw() {
   background(Frozen);
-  text("Olaf's Blizzard", width/5.7, height/5);
-  textSize(80);
-  text("Adventure", width/3.5, height/3);
   imageMode(CENTER);
-  image(Olafmenu, width/2, height/2+70) ;
+
   image(Startbutton, Startbuttonx, Startbuttony);
   image(Exitbutton, exitbuttonx, exitbuttony);
   if (mouseX>Startbuttonx-80 && mouseX<Startbuttonx+80 && mouseY>Startbuttony-30 && mouseY<Startbuttony+30) {
