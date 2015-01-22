@@ -21,7 +21,7 @@ PImage Frozen;
 
 
 
-
+PImage Inst;
 
 //initialize restartbutton locations
 PImage restartbutton;
@@ -60,6 +60,7 @@ Starfield starfield;
 
 
 void setup() {
+  Inst = loadImage("Instruc.jpg");
   //stage 1
   OlafLoc = new PVector(width+500, height-705);
   stage = 1;
@@ -68,8 +69,7 @@ void setup() {
   size(Frozen.width, Frozen.height);
   Startbutton = loadImage("Start.png");
   Exitbutton = loadImage("ExitButton.png");
-  Startbuttonx= width/3-100;
-  Startbuttony= height/2+70;
+ 
   imageMode(CENTER);
   restartbuttonx=width/2+200;
   restartbuttony=height/2;
@@ -89,7 +89,7 @@ void setup() {
   noStroke();
   fill(255, 200);
   //Forth
-  lose = loadImage("LOSE.jpg");
+  lose = loadImage("Lose one.jpg");
 
   restart2 = loadImage("restart2.png");
   exit2button = loadImage("ExitButtonlose.png");
@@ -125,6 +125,8 @@ if (stage==0){stage=1;}
     background(Frozen);
     imageMode(CENTER);
     starfield.draw();
+     Startbuttonx= width/3-100;
+  Startbuttony= height/2+70;
     exitbuttonx= width/2+250;
     exitbuttony= height/2+70;
     image(Startbutton, Startbuttonx, Startbuttony);
@@ -146,8 +148,18 @@ if (stage==0){stage=1;}
       }
     }
   }
-
-  if (stage == 2) {
+if (stage ==2){
+  background (Inst);
+   Startbuttonx= width/2;
+  Startbuttony= height- 60;
+   image(Startbutton, Startbuttonx, Startbuttony);
+    if (mouseX>Startbuttonx-80 && mouseX<Startbuttonx+80 && mouseY>Startbuttony-30 && mouseY<Startbuttony+30) {
+      if (mousePressed == true) {
+        stage=3;
+      }
+    }
+}
+  if (stage == 3) {
     background(Background);
     if (mouseX <= width/2) {
       image(Olaf, OlafLoc.x, OlafLoc.y);
@@ -202,16 +214,68 @@ if (stage==0){stage=1;}
     }
   }
   if (level == 4) {
-    stage= 3;
+    stage= 4;
   }
-  if (stage == 3) {
+  if (stage == 4) {
     background(WON);
     imageMode(CENTER);
     image(restartbutton, restartbuttonx, restartbuttony);
     image(Exitbutton, exitbuttonx, exitbuttony);
     if (mouseX>restartbuttonx-80 && mouseX<restartbuttonx+80 && mouseY>restartbuttony-30 && mouseY<restartbuttony+30) {
       if (mousePressed == true) {
-        stage=1;
+         stage = 3;
+        background(Background);
+    if (mouseX <= width/2) {
+      image(Olaf, OlafLoc.x, OlafLoc.y);
+    } else {
+      image(OlafBack, OlafLoc.x, OlafLoc.y);
+    }    
+    for (int i=0; i<wolves.length; i++) {
+      wolves[i].display();
+      wolves[i].attack();
+      wolves[i].elliminate();
+    }
+    for (int j=0; j<marshmallows.length; j++) {
+      marshmallows[j].display();
+      marshmallows[j].attack();
+    }
+    for (int k=0; k<hanz.length; k++) {
+      hanz[k].display();
+      hanz[k].attack();
+    }
+    for (int j = bullets.size ()-1; j>=0; j--) {//setting the functions for the bullet projectiles
+      Bullet b = bullets.get(j);
+      b.display();
+      b.move();
+      for (int i=0; i<wolves.length; i++) {
+        b.hit(wolves[i]);
+      }
+      for (int m=0; m<marshmallows.length; m++) {
+        b.hit2(marshmallows[m]);
+      }
+      for (int h=0; h<hanz.length; h++) {
+        b.hit3(hanz[h]);
+      }
+    }
+    if (keyPressed) {
+      if (key == 'd') {
+        OlafLoc.x+= 10;
+      }
+      if (keyPressed) {
+        if (key == 'a') {
+          OlafLoc.x-= 10;
+        }
+        if (OlafLoc.x >= width) {
+          OlafLoc.x = 300;
+          level++;
+          println(level);
+        }
+        OlafLoc.y = constrain(OlafLoc.y, height-78, height);
+      }
+    }
+    if (num == -50) {
+      println("win");
+    }
       }
     }
 
@@ -224,10 +288,11 @@ if (stage==0){stage=1;}
       }
     }
   }
-  if (stage==4) {
+  if (stage==5) {
     background(lose);
     imageMode(CENTER);
 
+    starfield.draw();
     //image(Olafmenu, width/2, height/2+70) ;
     image(restart2, restart2x, restart2y);
     image(exit2button, exit2buttonx, exit2buttony);
