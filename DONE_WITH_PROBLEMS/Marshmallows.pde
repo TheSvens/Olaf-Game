@@ -27,5 +27,16 @@ class Marshmallows {
       loc2.add(vel2);
     }
   }
+   void elliminate() {
+    if (loc.dist(OlafLoc) <=140) {
+      println("dead");
+      vel = new PVector(0, 0);
+      stage = 5;
+    }
+    if (loc2.dist(OlafLoc) <= 150) {
+      vel2 = new PVector(0, 0);
+      stage = 5;
+    }
+  }
 }
 
