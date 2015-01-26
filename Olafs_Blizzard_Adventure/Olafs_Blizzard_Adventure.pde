@@ -185,7 +185,7 @@ void draw() {
     image(Exitbutton, exitbuttonx, exitbuttony);                                                                   //display the exit button
 
     if (mousePressed) {                                                                                            //if the mouse is pressed
-      stage = 3;                                                                                                   //change to satege 3
+      stage = 3;                                                                                                   //change to stage 3
       background(Background);                                                                                      //change the background
       if (mouseX <= width/2) {                                                                                     //if the mouse is on the left half of the screen
         image(Olaf, OlafLoc.x, OlafLoc.y);                                                                         //display olaf facing left

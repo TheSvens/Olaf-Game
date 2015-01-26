@@ -52,11 +52,11 @@ class Bullet {
     }
   }
   void hit3(Hanz h) {                                                              //hit hanza
-    if (loc.dist(h.loc) <= 50) {                                                   //if loc of bullet is same as hanz
+    if (loc.dist(h.loc) <= 80) {                                                   //if loc of bullet is same as hanz
       h.loc = new PVector(random(-2500, -100), height-155);                        //move hanz off screen
       h.vel = new PVector(0, 0);                                                   //no velocity
     }
-    if (loc.dist(h.loc2) <= 50){                                                   //if loc of bullet is same as hanz
+    if (loc.dist(h.loc2) <= 80){                                                   //if loc of bullet is same as hanz
       h.loc2 = new PVector(random(width+100, width+2500), height-155);             //move hanz off screen 
       h.vel2 = new PVector(0, 0);                                                  //no velocity
     }
