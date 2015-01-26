@@ -1,11 +1,11 @@
 //CLASS
 class Blizzard {
-  ArrayList flakes;//ArrayList for snow
+  ArrayList flakes;                                                                    //ArrayList for snow
 
 //CONSTRUCTOR   
   Blizzard() {
-    flakes = new ArrayList();//initializing the flakes ArrayList
-    for (int i = 0; i < 300; i++) {//setting parameters for multiple variables
+    flakes = new ArrayList();                                                          //initializing the flakes ArrayList
+    for (int i = 0; i < 300; i++) {                                                    //setting parameters for multiple variables
       Flake s = new Flake();
       s.x = random(0, width);
       s.y = random(0, height);
@@ -15,13 +15,13 @@ class Blizzard {
   }
 
 //METHODS   
-  void draw() {//method for drawing the Blizzard 
-    for (int i = 0; i < flakes.size(); i++) {//setting draw parameters
+  void draw() {                                                                        //method for drawing the Blizzard 
+    for (int i = 0; i < flakes.size(); i++) {                                          //setting draw parameters
       Flake s = (Flake)flakes.get(i);
-      s.y += s.size;
+      s.y += s.size;                                                                   //increase Y loc depending on size of flake
       fill(255);
       noStroke();
-      ellipse(s.x, s.y, s.size, s.size);
+      ellipse(s.x, s.y, s.size, s.size);                                              //snow ellipse
       if (s.y > height+10) {
         s.x = random(0, width);
         s.y = random(-30, 0);
@@ -32,7 +32,7 @@ class Blizzard {
 }
 //SEPERATE CLASS FOR THE flakes 
 class Flake {
-  float x;//float for x coordinate
-  float y;//float for y coordinate 
-  float size;//float for size
+  float x;                                                                          //float for x coordinate
+  float y;                                                                          //float for y coordinate 
+  float size;                                                                      //float for size
 }
